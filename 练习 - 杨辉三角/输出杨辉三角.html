@@ -1,0 +1,37 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-01 16:06:43
+ * @LastEditTime: 2021-09-01 16:07:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 杨辉三角\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/pascals-triangle/submissions/ -->
+    <!-- 题解：https://leetcode-cn.com/problems/pascals-triangle/solution/yang-hui-san-jiao-by-leetcode-solution-lew9/ -->
+    <script>
+        var generate = function (numRows) {
+            let res = [];
+            for (let i = 0; i < numRows; ++i) {
+                let rows = Array(i + 1).fill(1);
+                for (let j = 1, len = rows.length - 1; j < len; ++j) {
+                    rows[j] = res[i - 1][j - 1] + res[i - 1][j];
+                }
+                res.push(rows);
+            }
+            return res;
+        };
+    </script>
+</body>
+
+</html>
