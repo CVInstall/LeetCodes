@@ -1,10 +1,10 @@
 <!--
  * @Author: your name
- * @Date: 2021-09-01 14:52:22
- * @LastEditTime: 2021-09-01 21:42:29
+ * @Date: 2021-09-01 21:44:58
+ * @LastEditTime: 2021-09-01 23:24:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \LeetCodes\练习 - 草稿\index.html
+ * @FilePath: \LeetCodes\练习 - 验证回文串\index.html
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,9 @@
 </head>
 
 <body>
+    <!-- 题目：https://leetcode-cn.com/problems/valid-palindrome/ -->
     <script>
+        // 初版（自己编写）
         var isPalindrome = function (s) {
             if (s === "") {
                 return true;
@@ -35,8 +37,24 @@
             return true;
         };
 
-        let str = "A man, a plan, a canal: Panama";
-        console.log(isPalindrome(str))
+        //
+        var isPalindrome = function (s) {
+            let a = s.toLocaleLowerCase().match(/[a-z0-9]+/g);
+            if (!a) return true
+            let str = a.join('')
+            // 双指针
+            let left = 0;
+            let right = str.length - 1
+            while (left < right) {
+                if (str[left] === str[right]) {
+                    left++
+                    right--
+                } else {
+                    return false
+                }
+            }
+            return true
+        };
     </script>
 </body>
 
