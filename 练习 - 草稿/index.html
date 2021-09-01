@@ -1,0 +1,43 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-01 14:52:22
+ * @LastEditTime: 2021-09-01 17:41:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 草稿\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var maxProfit = function (prices) {
+            let res = [];
+            for (let i = 0, len = prices.length; i < len - 1; ++i) {
+                let buy = prices[i];
+                let max = Math.max.apply(null, prices.slice(i + 1));
+                if (buy >= max) {
+                    continue;
+                } else {
+                    res.push(Math.abs(buy - max));
+                }
+            }
+            if (res.length === 0) {
+                return 0;
+            } else {
+                return Math.max.apply(null, res);
+            }
+        };
+
+        console.log(maxProfit([7, 1, 5, 3, 6, 4]))
+    </script>
+</body>
+
+</html>
