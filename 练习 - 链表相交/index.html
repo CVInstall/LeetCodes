@@ -1,0 +1,56 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-06 13:08:10
+ * @LastEditTime: 2021-09-06 13:23:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 链表相交\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/intersection-of-two-linked-lists/ -->
+    <!-- 题解：https://leetcode-cn.com/problems/intersection-of-two-linked-lists/solution/xiang-jiao-lian-biao-by-leetcode-solutio-a8jn/ -->
+    <script>
+        // hash表
+        var getIntersectionNode = function (headA, headB) {
+            const visited = new Set();
+            let temp = headA;
+            while (temp !== null) {
+                visited.add(temp);
+                temp = temp.next;
+            }
+            temp = headB;
+            while (temp !== null) {
+                if (visited.has(temp)) {
+                    return temp;
+                }
+                temp = temp.next;
+            }
+            return null;
+        };
+
+        // 双指针
+        var getIntersectionNode = function (headA, headB) {
+            if (headA === null || headB === null) {
+                return null;
+            }
+            let pA = headA, pB = headB;
+            while (pA !== pB) {
+                pA = pA === null ? headB : pA.next;
+                pB = pB === null ? headA : pB.next;
+            }
+            return pA;
+        };
+    </script>
+</body>
+
+</html>
