@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-07 22:56:51
+ * @LastEditTime: 2021-09-07 23:10:48
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 罗马数字转整数\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/roman-to-integer/ -->
+    <script>
+        var romanToInt = function (s) {
+            let strToNumber = new Map();
+            strToNumber.set("I", 1);
+            strToNumber.set("V", 5);
+            strToNumber.set("X", 10);
+            strToNumber.set("L", 50);
+            strToNumber.set("C", 100);
+            strToNumber.set("D", 500);
+            strToNumber.set("M", 1000);
+
+            let res_num = 0;
+            for (let i = 0, len = s.length; i < len; ++i) {
+                if (strToNumber.get(s[i]) >= strToNumber.get(s[i + 1]) || !strToNumber.get(s[i + 1])) {
+                    res_num = res_num + strToNumber.get(s[i]);
+                } else {
+                    res_num = res_num - strToNumber.get(s[i]);
+                }
+            }
+            return res_num;
+        };
+    </script>
+</body>
+
+</html>

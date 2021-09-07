@@ -1,0 +1,41 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-07 22:03:20
+ * @LastEditTime: 2021-09-07 22:12:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 整数反转\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/reverse-integer/ -->
+    <script>
+        var reverse = function (x) {
+            let flag = x < 0 ? -1 : 1;
+            let left = 0;
+            x = Math.abs(x);
+
+            while (x > 0) {
+                let gw = x % 10;
+                left = left * 10 + gw;
+                x = Math.floor(x / 10);
+            }
+            if (left > Math.pow(2, 31) - 1) {
+                return 0;
+            } else {
+                return left * flag;
+            }
+        };
+    </script>
+</body>
+
+</html>

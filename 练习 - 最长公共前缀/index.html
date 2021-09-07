@@ -1,0 +1,41 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-07 23:18:52
+ * @LastEditTime: 2021-09-07 23:38:47
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 最长公共前缀\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/longest-common-prefix/ -->
+    <script>
+        var longestCommonPrefix = function (strs) {
+            let s_str = strs.shift();
+
+            for (let i = 0, len = strs.length; i < len; ++i) {
+                let min_len = Math.min(s_str.length, strs[i].length);
+                let counter = 0;
+                for (; counter < min_len; ++counter) {
+                    if (s_str[counter] !== strs[i][counter]) {
+                        break;
+                    }
+                }
+                s_str = s_str.slice(0, counter);
+            }
+
+            return s_str;
+        };
+    </script>
+</body>
+
+</html>

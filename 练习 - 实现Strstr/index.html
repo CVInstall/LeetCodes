@@ -1,0 +1,40 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-07 21:45:47
+ * @LastEditTime: 2021-09-07 21:45:47
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 实现Strstr\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/implement-strstr/ -->
+    <script>
+        var strStr = function (haystack, needle) {
+            if (needle === "") {
+                return 0;
+            }
+            let s_len = haystack.length;
+            let d_len = needle.length;
+
+            for (let i = 0; i + d_len <= s_len; ++i) {
+                let str = haystack.slice(i, i + d_len);
+                if (str === needle) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+    </script>
+</body>
+
+</html>

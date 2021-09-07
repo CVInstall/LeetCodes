@@ -1,0 +1,34 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-07 22:13:38
+ * @LastEditTime: 2021-09-07 22:19:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 回文数\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/palindrome-number/ -->
+    <script>
+        var isPalindrome = function (x) {
+            let num_str = x.toString();
+            for (let left = 0, right = num_str.length - 1; left < right; ++left, --right) {
+                if (num_str[left] !== num_str[right]) {
+                    return false;
+                }
+            }
+            return true;
+        };
+    </script>
+</body>
+
+</html>
