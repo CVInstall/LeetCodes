@@ -1,0 +1,35 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-08 23:01:34
+ * @LastEditTime: 2021-09-08 23:01:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 最大子序和\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/maximum-subarray/ -->
+    <script>
+        var maxSubArray = function (nums) {
+            let pre = 0;
+            let max = nums[0];
+
+            nums.forEach(item => {
+                pre = Math.max(pre + item, item);
+                max = Math.max(pre, max);
+            })
+            return max;
+        };
+    </script>
+</body>
+
+</html>
