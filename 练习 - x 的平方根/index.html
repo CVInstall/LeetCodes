@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-09 10:05:41
- * @LastEditTime: 2021-09-09 10:05:41
+ * @LastEditTime: 2021-09-09 21:10:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LeetCodes\练习 - x 的平方根\index.html
@@ -33,6 +33,27 @@
             }
             return right
         }
+        
+        var mySqrt = function (x) {
+            if (x < 2) {
+                return x;
+            }
+            let left = 1;
+            let right = Math.floor(x / 2);
+
+            while (left <= right) {
+                let middle = Math.floor((right - left) / 2 + left);
+                if (middle * middle === x) {
+                    return middle;
+                } else if (middle * middle > x) {
+                    right = middle - 1;
+                } else {
+                    left = middle + 1;
+                }
+            }
+
+            return right;
+        };
     </script>
 </body>
 
