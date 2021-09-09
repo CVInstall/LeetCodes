@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-09 10:05:41
+ * @LastEditTime: 2021-09-09 10:05:41
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - x 的平方根\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/sqrtx/ -->
+    <script>
+        var mySqrt = function (x) {
+            if (x < 2) return x
+            let left = 1, mid, right = Math.floor(x / 2);
+            while (left <= right) {
+                mid = Math.floor(left + (right - left) / 2)
+                if (mid * mid === x) return mid
+                if (mid * mid < x) {
+                    left = mid + 1
+                } else {
+                    right = mid - 1
+                }
+            }
+            return right
+        }
+    </script>
+</body>
+
+</html>

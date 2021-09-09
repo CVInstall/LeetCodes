@@ -1,0 +1,56 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-09 09:47:15
+ * @LastEditTime: 2021-09-09 10:00:42
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 加一\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/plus-one/ -->
+    <script>
+        var plusOne = function (digits) {
+            let len = digits.length;
+
+            for (let i = len - 1; i >= 0; --i) {
+                ++digits[i];
+                digits[i] %= 10;
+                if (digits[i] !== 0) {
+                    return digits;
+                }
+            }
+            digits = [...Array(len + 1)].map(() => 0);
+            digits[0] = 1;
+            return digits;
+        };
+
+        var plusOne = function (digits) {
+            let len = digits.length - 1;
+            let jw = 0;
+
+            while (len >= 0) {
+                digits[len] = (digits[len] + 1 + jw) % 10;
+                jw = Math.floor((digits[len] + 1 + jw) / 10);
+                if (digits[len] !== 0) {
+                    return digits;
+                }
+                --len;
+            }
+            let res = Array(digits.length + 1).fill(0);
+            res[0] = 1;
+            return res;
+        }
+    </script>
+</body>
+
+</html>
