@@ -1,0 +1,50 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-10 14:24:08
+ * @LastEditTime: 2021-09-10 14:25:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 12\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/excel-sheet-column-number/ -->
+    <script>
+        var titleToNumber = function (columnTitle) {
+            let res = 0;
+            let map = new Map();
+            let words = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+            for (let i = 0, len = words.length; i < len; ++i) {
+                map.set(words[i], i + 1);
+            }
+            let count = 0;
+            for (let j = columnTitle.length - 1; j >= 0; --j) {
+                res += Math.pow(26, count) * map.get(columnTitle[j]);
+                ++count;
+            }
+            return res;
+        };
+
+        var titleToNumber = function (columnTitle) {
+            let number = 0;
+            let multiple = 1;
+            for (let i = columnTitle.length - 1; i >= 0; i--) {
+                const k = columnTitle[i].charCodeAt() - 'A'.charCodeAt() + 1;
+                number += k * multiple;
+                multiple *= 26;
+            }
+            return number;
+        };
+    </script>
+</body>
+
+</html>

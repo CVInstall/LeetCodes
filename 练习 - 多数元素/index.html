@@ -1,0 +1,67 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-10 10:06:00
+ * @LastEditTime: 2021-09-10 13:53:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 多数元素\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/majority-element/ -->
+    <!-- 题解：https://leetcode-cn.com/problems/majority-element/solution/yi-ban-by-shetia/ -->
+    <script>
+        // map集合
+        var majorityElement = function (nums) {
+            let times = nums.length / 2;
+            let map = new Map();
+
+            for (let i = 0, len = nums.length; i < len; ++i) {
+                if (map.has(nums[i])) {
+                    let count = map.get(nums[i]) + 1;
+                    if (count >= times) {
+                        return nums[i];
+                    } else {
+                        map.set(nums[i], count);
+                    }
+                } else {
+                    if (1 >= times) {
+                        return nums[i];
+                    }
+                    map.set(nums[i], 1);
+                }
+            }
+        };
+
+        // 排序
+        var majorityElement = function (nums) {
+            nums.sort((a, b) => a - b)
+            return nums[Math.floor(nums.length / 2)]
+        };
+
+        // 栈
+        var majorityElement = function (nums) {
+            let stack = []
+            for (let n of nums) {
+                let m = stack.length
+                if (stack[m - 1] === n || !m) {
+                    stack.push(n)
+                } else {
+                    stack.pop()
+                }
+            }
+            return stack[0]
+        };
+    </script>
+</body>
+
+</html>
