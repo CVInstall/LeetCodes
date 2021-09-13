@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-13 12:31:36
+ * @LastEditTime: 2021-09-13 12:43:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 二叉树\对称二叉树.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/symmetric-tree/ -->
+    <script>
+        // 递归思想
+        var isSymmetric = function (root) {
+            function compare(p, q) {
+                if (p === null && q === null) {
+                    return true;
+                } else if (p === null || q === null) {
+                    return false;
+                } else {
+                    return p.val === q.val && compare(p.left, q.right) && compare(p.right, q.left);
+                }
+            }
+
+            return compare(root, root);
+        }
+
+        // 迭代
+        var isSymmetric = function (root) {
+            let queen = [];
+            queen.push(root);
+            queen.push(root);
+
+            while (queen.length !== 0) {
+                let p = queen.shift();
+                let q = queen.shift();
+
+                if (p === null && q === null) {
+                    continue;
+                } else if (p === null || q === null) {
+                    return false;
+                } else if (p.val !== q.val) {
+                    return false;
+                }
+
+                queen.push(p.left);
+                queen.push(q.right);
+
+                queen.push(p.right);
+                queen.push(q.left);
+
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>

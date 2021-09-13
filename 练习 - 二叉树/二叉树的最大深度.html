@@ -1,0 +1,54 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-13 12:56:44
+ * @LastEditTime: 2021-09-13 14:03:46
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 二叉树\二叉树的最大深度.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 深度优先便利
+        var maxDepth = function (root, level = 0) {
+            if (!root) {
+                return null;
+            } else {
+                let left = maxDepth(root.left);
+                let right = maxDepth(root.right);
+                return Math.max(left, right) + 1;
+            }
+        };
+
+        //广度优先遍历
+        var maxDepth = function (root, level = 0) {
+            if (root === null) {
+                return 0;
+            }
+            let queue = [root]
+
+            while (queue.length > 0) {
+                let len = queue.length
+
+                while (len--) { //把当前level的queue队列清空，同时把节点左右子节点push
+                    let first = queue.shift() // 左出
+                    if (first.left) queue.push(first.left) // 左子节点入队列
+                    if (first.right) queue.push(first.right) //右子节点入队列
+                }
+                level++
+            }
+            return level
+        };
+    </script>
+</body>
+
+</html>
