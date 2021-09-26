@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-04 08:20:57
- * @LastEditTime: 2021-09-04 11:00:48
+ * @LastEditTime: 2021-09-26 15:15:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LeetCodes\练习 - 二叉树\树的遍历.html
@@ -22,15 +22,17 @@
         // 递归 - 前序遍历
         var preorderTraversal = function (root) {
             let res = [];
+
             function inorder(root) {
-                if (!root) {
-                    return [];
+                if (root === null) {
+                    return null;
                 }
                 res.push(root.val);
-                let left = inorder(root.left);
-                let right = inorder(root.right);
+                inorder(root.left);
+                inorder(root.right);
             }
 
+            inorder(root);
             return res;
         };
 
@@ -39,12 +41,12 @@
             let res = [];
 
             function inorder(root) {
-                if (!root) {
+                if (root === null) {
                     return null;
                 } else {
-                    let left = inorder(root.left);
+                    inorder(root.left);
                     res.push(root.val);
-                    let right = inorder(root.right);
+                    inorder(root.right);
                 }
             }
 
@@ -57,11 +59,11 @@
             let res = [];
 
             function inorder(root) {
-                if (!root) {
+                if (root === null) {
                     return null;
                 } else {
-                    let left = inorder(root.left);
-                    let right = inorder(root.right);
+                    inorder(root.left);
+                    inorder(root.right);
                     res.push(root.val);
                 }
             }
