@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 22:13:38
- * @LastEditTime: 2021-09-07 22:19:32
+ * @LastEditTime: 2021-09-27 11:20:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LeetCodes\练习 - 回文数\index.html
@@ -18,7 +18,9 @@
 
 <body>
     <!-- 题目：https://leetcode-cn.com/problems/palindrome-number/ -->
+    <!-- 题解：https://leetcode-cn.com/problems/palindrome-number/solution/hui-wen-shu-by-leetcode-solution/ -->
     <script>
+        // 字符串 - 双指针
         var isPalindrome = function (x) {
             let num_str = x.toString();
             for (let left = 0, right = num_str.length - 1; left < right; ++left, --right) {
@@ -27,6 +29,21 @@
                 }
             }
             return true;
+        };
+
+        // 数字转换
+        var isPalindrome = function (x) {
+            if (x < 0 || (x % 10 === 0 && x !== 0)) {
+                return false;
+            }
+
+            let left = 0;
+            while (left < x) {
+                left = left * 10 + x % 10;
+                x = Math.floor(x / 10);
+            }
+
+            return x === left || x === Math.floor(left / 10);
         };
     </script>
 </body>
