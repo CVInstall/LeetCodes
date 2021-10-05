@@ -1,0 +1,117 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-11 18:21:02
+ * @LastEditTime: 2021-09-11 19:04:16
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 二叉树\相同的树.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/same-tree/ -->
+    <!-- 题解：https://leetcode-cn.com/problems/same-tree/solution/100-xiang-tong-de-shu-by-xing-guang-29-rfuy/ -->
+    <script>
+        // 深度优先遍历
+        var isSameTree = function (p, q) {
+            if (p === null && q === null) {
+                return true;
+            } else if (!p || !q) {
+                return false;
+            } else if (p.val !== q.val) {
+                return false;
+            } else {
+                return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+            }
+        };
+
+        // 广度优先遍历
+        var isSameTree = function (p, q) {
+            if (p === null && q === null) {
+                return true;
+            } else if (p === null || q === null) {
+                return false;
+            }
+            let queenP = [];
+            let queenQ = [];
+            queenP.push(p);
+            queenQ.push(q);
+
+            while (queenP.length !== 0 && queenQ.length !== 0) {
+                let nodeP = queenP.shift();
+                let nodeQ = queenQ.shift();
+
+                if (nodeP.val !== nodeQ.val) {
+                    return false;
+                } else if ((nodeP.left === null && nodeQ.left !== null) || (nodeP.left !== null && nodeQ.left === null)) {
+                    return false;
+                } else if ((nodeP.right === null && nodeQ.right !== null) || (nodeP.right !== null && nodeQ.right === null)) {
+                    return false;
+                }
+
+                if (nodeP.left) {
+                    queenP.push(nodeP.left);
+                }
+                if (nodeP.right) {
+                    queenP.push(nodeP.right);
+                }
+
+                if (nodeQ.left) {
+                    queenQ.push(nodeQ.left);
+                }
+                if (nodeQ.right) {
+                    queenQ.push(nodeQ.right);
+                }
+            }
+            return queenQ.length === queenP.length;
+        };
+
+        // 根据树的前序遍历和中序遍历是否都相同来判定树是否相同（前序遍历和中序遍历确定一棵树）
+        var isSameTree = function (p, q) {
+            let preOrderP = preOrder(p).join('');
+            let preOrderQ = preOrder(q).join('');
+
+            let inOrderP = inOrder(p).join('');
+            let inOrderQ = inOrder(q).join('');
+
+            // 直接转成字符串比较即可
+            return preOrderP == preOrderQ && inOrderQ == inOrderQ;
+        };
+
+        // 树的前序遍历
+        var preOrder = function (root, result = []) {
+            if (root == null) {
+                result.push('#'); // 空节点占位
+                return result;
+            }
+            result.push(root.val);
+            preOrder(root.left, result);
+            preOrder(root.right, result);
+
+            return result;
+        }
+
+        // 树的中序遍历
+        var inOrder = function (root, result = []) {
+            if (root == null) {
+                result.push('#'); // 空节点占位
+                return result;
+            }
+            inOrder(root.left, result);
+            result.push(root.val);
+            inOrder(root.right, result);
+
+            return result;
+        }
+    </script>
+</body>
+
+</html>
