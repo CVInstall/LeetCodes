@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-09 10:05:41
- * @LastEditTime: 2021-09-09 21:10:47
+ * @LastEditTime: 2021-09-30 17:40:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LeetCodes\练习 - x 的平方根\index.html
@@ -19,6 +19,7 @@
 <body>
     <!-- 题目：https://leetcode-cn.com/problems/sqrtx/ -->
     <script>
+        // 二分法求解
         var mySqrt = function (x) {
             if (x < 2) return x
             let left = 1, mid, right = Math.floor(x / 2);
@@ -33,7 +34,8 @@
             }
             return right
         }
-        
+
+        // 牛顿迭代法
         var mySqrt = function (x) {
             if (x < 2) {
                 return x;
