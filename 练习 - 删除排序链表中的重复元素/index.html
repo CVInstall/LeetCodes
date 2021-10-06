@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 17:43:13
- * @LastEditTime: 2021-09-10 18:13:56
+ * @LastEditTime: 2021-10-05 17:52:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LeetCodes\练习 - 删除排序链表中的重复元素\index.html
@@ -34,6 +34,25 @@
             }
             return head;
         };
+
+        var deleteDuplicates = function (head) {
+            let slow = head;
+            let fast = slow?.next || null;
+
+            while (fast !== null) {
+                if (slow !== fast) {
+                    slow.next = fast;
+                    slow = slow.next;
+                } else {
+                    fast = fast.next;
+                    if (fast === null) {
+                        slow.next = null;
+                    }
+                }
+            }
+
+            return node.next;
+        }
     </script>
 </body>
 

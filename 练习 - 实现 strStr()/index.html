@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-08 22:25:50
- * @LastEditTime: 2021-09-08 22:26:51
+ * @LastEditTime: 2021-10-05 18:17:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LeetCodes\练习 - 实现 strStr()\index.html
@@ -19,21 +19,21 @@
 <body>
     <!-- 题目：https://leetcode-cn.com/problems/implement-strstr/ -->
     <script>
-        var strStr = function (haystack, needle) {
-            if (needle === "") {
+        let strStr = function (haystack, needle) {
+            if (haystack === "" && needle === "") {
                 return 0;
             }
-            let s_len = haystack.length;
-            let d_len = needle.length;
 
-            for (let i = 0; i + d_len <= s_len; ++i) {
-                let str = haystack.slice(i, i + d_len);
-                if (str === needle) {
+            let str_len = needle.length;
+            for (let i = 0, len = haystack.length; i + str_len <= len; ++i) {
+                let slice_stack = haystack.slice(i, i + str_len);
+                if (slice_stack === needle) {
                     return i;
                 }
             }
+
             return -1;
-        };
+        }
     </script>
 </body>
 
