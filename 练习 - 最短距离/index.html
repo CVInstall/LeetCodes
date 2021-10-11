@@ -1,0 +1,61 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-11 10:06:32
+ * @LastEditTime: 2021-10-11 10:07:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 最短距离\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/shortest-distance-to-a-character/ -->
+    <!-- 题解：https://leetcode-cn.com/problems/shortest-distance-to-a-character/solution/3chong-jie-fa-3ge-yue-bu-xie-du-wang-cha-4hh9/ -->
+    <script>
+        // 暴力解
+        var shortestToChar = function (s, c) {
+            let strIndexArray = [];
+            let lStrArray = s.split("");
+            lStrArray.forEach((item, index) => {
+                if (item === c) {
+                    strIndexArray.push(index);
+                }
+            })
+            let count = strIndexArray.length;
+            let res = [];
+            for (let j = 0, len = lStrArray.length; j < len; j++) {
+                let indexArray = [];
+                for (let i = 0; i < count; i++) {
+                    indexArray.push(Math.abs(j - strIndexArray[i]));
+                }
+                let minLnegth = Math.min(...indexArray);
+                res.push(minLnegth);
+            }
+            return res;
+        };
+
+        // 中心扩展
+        var shortestToChar = function (S, C) {
+            const res = [] // 定义返回的数组
+            for (let i = 0; i < S.length; i++) {
+                let diff = 0; // 定义指针偏移量
+
+                while ((i - diff >= 0 || i + diff < S.length) && S[i - diff] != C && S[i + diff] != C) {
+                    diff++
+                }
+                res.push(diff)
+            }
+            return res
+        };
+    </script>
+</body>
+
+</html>

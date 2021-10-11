@@ -1,0 +1,50 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-11 10:26:22
+ * @LastEditTime: 2021-10-11 10:26:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LeetCodes\练习 - 二叉树\层序遍历.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：https://leetcode-cn.com/problems/binary-tree-level-order-traversal/ -->
+    <!-- 题解： -->
+    <script>
+        var levelOrder = function (root) {
+            if (root === null) {
+                return [];
+            }
+
+            let stack = [root];
+            let res = [];
+
+            while (stack.length !== 0) {
+                let len = stack.length;
+                let cur_level_array = [];
+
+                while (len--) {
+                    let node = stack.pop();
+                    cur_level_array.push(node.val);
+                    if (node.left) stack.unshift(node.left);
+                    if (node.right) stack.unshift(node.right);
+                }
+
+                res.push(cur_level_array);
+            }
+
+            return res;
+        };
+    </script>
+</body>
+
+</html>
