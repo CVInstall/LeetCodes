@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-01 14:52:22
- * @LastEditTime: 2021-09-01 21:42:29
+ * @LastEditTime: 2021-11-30 11:44:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LeetCodes\练习 - 草稿\index.html
@@ -18,25 +18,7 @@
 
 <body>
     <script>
-        var isPalindrome = function (s) {
-            if (s === "") {
-                return true;
-            }
-            let s_array = s.split("");
-            s_array = s_array.filter(item => {
-                let str = item.toLowerCase();
-                return item != " " && ((str >= "a" && str <= "z") || (str >= 0 && str <= 9));
-            })
-            for (let left = 0, right = s_array.length - 1; left <= right; ++left, --right) {
-                if (s_array[left].toLowerCase() != s_array[right].toLowerCase()) {
-                    return false;
-                }
-            }
-            return true;
-        };
 
-        let str = "A man, a plan, a canal: Panama";
-        console.log(isPalindrome(str))
     </script>
 </body>
 
